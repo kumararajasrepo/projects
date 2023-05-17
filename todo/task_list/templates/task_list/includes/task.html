@@ -1,0 +1,39 @@
+<li class="list-group-item d-flex justify-content-between align-items-start">
+  
+  <div>
+    <div class="ms-2 me-auto">
+
+      <div class="fw-bold">
+        {% if task.is_completed %}
+          <span style="text-decoration: line-through; color: green;">
+            <b>&nbsp;&nbsp;{{task.title}}&nbsp;&nbsp;</b>
+          </span>&nbsp;
+        {% else %}
+          <span>
+            <b>{{task.title}}</b>
+          </span>
+        {% endif %}
+
+        <span class="badge bg-warning rounded-pill">🕒 {{task.due_date}}</span>
+
+        {% if task.note != "" %}
+          <footer class="blockquote-footer">
+            <cite title="Source Title">{{task.description}}</cite>
+          </footer>
+        {% endif %}
+
+      </div>
+    </div>
+  </div>
+
+  <div class="btn-group" role="group">
+    {% if task.is_completed %}
+      <button type="button" class="btn btn-outline-danger" onclick="location.href='{% url 'url-complete-task' task.pk False %}'">❌
+    {% else %}
+      <button type="button" class="btn btn-outline-success" onclick="location.href='{% url 'url-complete-task' task.pk True %}'">✔️
+    {% endif %}
+    <button type="button" class="btn btn-outline-secondary" onclick="location.href='{% url 'url-update-task' task.pk %}'">✏️
+    <button type="button" class="btn btn-outline-danger" onclick="location.href='{% url 'url-delete-task' task.pk %}'">🗑️
+  </div>
+  
+</li>

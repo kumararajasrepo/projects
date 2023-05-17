@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+    ToDo List
+{% endblock title %}
+
+{% block body %}
+    <form method="POST">
+        {% csrf_token %}
+        <div class="flex-center">
+            <div class="card" style="width: 35rem;">
+                <div class="card-header text-center">
+                    <b>Tasks</b>
+                    <div class="btn-group d-flex justify-content-end" style="margin-right: 1.2rem" role="group">
+                        <button type="button" class="btn btn-outline-danger" onclick="location.href='{% url 'url-confirm-delete-tasks' %}'">🗑️</button>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <ol class="list-group list-group-numbered">
+                        {% for task in tasks %}
+                            {% include "task_list/includes/task.html" %}
+                        {% endfor %}
+                        <li class="list-group-item d-flex justify-content-center">
+                            <div class="btn-group" role="group">
+                                <button type="button" class="btn btn-outline-success" onclick="location.href='{% url 'url-add-task' %}'">➕</button>
+                            </div>
+                        </li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </form>
+{% endblock body %}

@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+    {{post.title}}
+{% endblock title %}
+
+{% block body %}
+<form method='post' enctype="multipart/form-data">
+    {% csrf_token %}
+
+    <div class="flex-center">
+        <div class="card" style="width: 80%;">
+            
+            <div class="card-header">
+                {% block post_title_icon %}{% endblock post_title_icon %}
+                <b>
+                    <span style="margin-top:1rem;">
+                        {% block post_title %}{% endblock post_title %}
+                    </span>
+                </b>
+            </div>
+
+            <div class="card-body">
+
+                <div class="input-group mb-3">
+                    <input required name={{form.title.name}} type="text" class="form-control" placeholder={{form.title.label}} value="{{post.title}}">
+                </div>
+                
+                <div class="input-group mb-3">
+                    <input required name={{form.description.name}} type="text" class="form-control" placeholder={{form.description.label}} value="{{post.description}}">
+                </div>
+
+                <div class="mb-3">
+                    <input id="post-image" name="image" class="form-control" type="file">
+                    {% if post.image %}
+                        <script>
+                            document.getElementById('post-image').value = "{{post.image.url}}";
+                        </script>
+                    {% endif %}
+                </div>
+            
+                {% include "includes/ckeditor.html" with name='content' value=post.content %}
+                
+                <div class="mb-3">
+                    {% include "includes/errors.html" %}
+                </div>
+                
+                <div class="input-group mb-3 d-flex justify-content-center">
+                    <button class="btn btn-success" type="submit" style="width: 12rem; margin-top: 1rem;">{% block post_submit %}{% endblock post_submit %}</button>
+                </div>
+                
+            </div>
+            
+        </div>
+    </div>
+
+</form>
+{% endblock body %}

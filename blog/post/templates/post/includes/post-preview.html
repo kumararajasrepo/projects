@@ -1,0 +1,17 @@
+{% load static %}
+
+<li>
+    <article class="post">
+        <a href="{% url "url-post" post.pk %}">
+            {% if post.image %}
+                <img src="{{ post.image.url }}" class="rounded" alt={{post.title}}/>
+            {% else %}
+                <img src="{% static 'images/post.png' %}" class="rounded" alt={{post.title}}/>
+            {% endif %}
+            <div class="post__content">
+                <h3>{{post.title}}</h3>
+                <p>{{post.description}}</p>
+            </div>
+        </a>
+    </article>
+</li>   

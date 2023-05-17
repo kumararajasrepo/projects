@@ -1,0 +1,14 @@
+{% if errors %}
+<div class="alert alert-danger alert-dismissible fade show" role="alert" style="width:100%;">
+    <ul>
+        <div style="margin-top:1rem;">
+            {% for field, error_list in errors.items %}
+            {% for error in error_list %}
+            <li>{{ field }} - {{ error }}</li>
+            {% endfor %}
+            {% endfor %}
+        </div>
+    </ul>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+{% endif %}

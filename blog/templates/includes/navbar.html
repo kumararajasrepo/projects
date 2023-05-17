@@ -1,0 +1,60 @@
+{% load static %}
+
+  <nav class="navbar navbar-expand-lg bg-body-tertiary bg-dark navbar-dark">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="{% url 'url-welcome' %}">
+            <img src="{% static 'images/logo.png' %}" alt="Logo" width="50" height="55" class="d-inline-block align-text-top" style="padding-top:0.2rem;">
+            Tech Blogger
+        </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+          
+            <li class="nav-item fs-4">
+                <a class="nav-link active" aria-current="page" href="{% url 'url-welcome' %}">Home</a>
+            </li>
+          
+            <li class="nav-item dropdown fs-4">
+                <a class="nav-link active" aria-current="page" href="{% url 'url-posts' %}">Browse</a>
+            </li>
+          
+          {% if request.user.is_authenticated %}
+
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="{% url "url-posts" %}" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <figure class="figure">
+                        {% if request.user.image %}
+                            <img src="{{request.user.image.url}}" class="rounded" alt="image" style="height:2rem;width:2rem;">
+                        {% else %}
+                            <img src="{% static 'images/profile.png' %}" class="rounded" alt="image" style="height:2rem;width:2rem;">
+                        {% endif %}
+                    </figure>
+                </a>
+                <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="#">Update</a></li>
+                    <li><hr class="dropdown-divider"></li>
+                    <li><a class="dropdown-item" href="{% url 'url-posts' %}">My Posts</a></li>
+                    <li><a class="dropdown-item" href="{% url 'url-new-post' %}">Create New Post</a></li>
+                    <li><hr class="dropdown-divider"></li>
+                    <li><a class="dropdown-item" href="{% url 'url-signout' %}">SignOut</a></li>
+                </ul>
+            </li>
+
+        {% else %}
+
+            <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="{% url 'url-signup' %}">SignUp</a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="{% url 'url-signin' %}">SignIn</a>
+            </li>
+
+        {% endif %}
+        
+        </ul>
+      </div>
+    </div>
+  </nav>

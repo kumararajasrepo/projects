@@ -1,0 +1,27 @@
+{% extends "gallery_manager/base.html" %}
+
+{% block title %}Photo{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col">
+
+        <a href="{% url 'gallery' %}" class="btn btn-dark my-3">Go Back</a>
+        <br>
+        <br>
+        <br>
+        <br>
+
+        <div style="height: 90vh;">
+            <img style="max-width: 100%; max-height: 100%;" src="{{photo.image.url}}">
+
+            <h3>{{photo.title}}</h3>
+            <br>
+            <br>
+            <p><b>Category :</b> {{photo.category}}</p>
+            <p>{{photo.description}}</p>
+        </div>
+
+    </div>
+</div>
+{% endblock %}

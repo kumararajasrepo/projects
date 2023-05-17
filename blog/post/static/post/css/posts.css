@@ -1,0 +1,45 @@
+body {
+    background-color: #e7e7e7;
+}
+
+#posts {
+    margin: -12rem auto;
+    width: 90%;
+    max-width: 60rem;
+    background-color: white;
+    padding: 2rem;
+    border-radius: 12px;
+    width: 60rem;
+    margin: -6rem auto 2rem auto;
+    box-shadow: 1px 1px 12px rgba(0, 0, 0, 0.4);
+    background: linear-gradient(to right top, #ffffff, #ece5e5);
+}
+
+#posts h2 {
+    text-align: center;
+    font-size: 2rem;
+    color: #000000;
+    margin-bottom: 3rem;
+}
+
+ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(17rem, 1fr));
+    gap: 1.5rem;
+}
+
+.post img {
+    width: 7rem;
+    height: 7rem;
+}
+
+.post a {
+    height: 22rem;
+    transform-origin: center;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+    border-radius: 12px;
+    background-color: white;
+}

@@ -1,0 +1,12 @@
+{
+    "emmet.includeLanguages": {
+        "django-html": "html"
+    },
+    "editor.formatOnSave": true,
+    "python.analysis.typeCheckingMode": "basic",
+    "workbench.tree.indent": 20,
+    "workbench.colorCustomizations": {
+        "tree.indentGuidesStroke": "#fff700",
+        "editorIndentGuide.activeBackground": "#ff00ff",
+    },
+}

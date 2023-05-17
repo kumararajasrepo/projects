@@ -1,0 +1,14 @@
+{% extends 'post/includes/post.html' %}
+{% load static %}
+
+{% block post_title_icon %}
+    <img id="clickable" src="{% static 'images/create.png' %}" alt="Logo" width="18" height="20" class="d-inline-block align-text-top" style="padding-top:0.2rem;">
+{% endblock post_title_icon %}
+
+{% block post_title %}
+    New Post
+{% endblock post_title %}
+
+{% block post_submit %}
+    Create Post
+{% endblock post_submit %}
