@@ -41,7 +41,7 @@
             {% for photo in photos %}
             <div class="col-md-4">
                 <div class="card shadow-sm my-2">
-                    <img class="image-thumbail" src="{{photo.image.url}}" alt="Card image cap">
+                    <img class="image-thumbail" src = "data:image/jpeg;base64,{{ photo.image_data | urlencode }}" alt="Card image cap">
                     <div class="card-body">
                         <h5>{{photo.title}}</h5>
                     </div>
