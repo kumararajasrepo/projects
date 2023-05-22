@@ -55,27 +55,47 @@
             text-align: center;
             margin: 0;
         }
+
         .success-message {
             color: green;
         }
+
         .error-message {
             color: red;
         }
-    </style>
 
+        .header {
+            overflow: hidden;
+            background-color: #f1f1f1;
+            padding: 20px 10px;
+        }
+
+        .header-right {
+            float: right;
+        }
+        app-title{
+            width:50%
+        }
+        app-search{
+            width:50%
+        }
+    </style>
     <script>
-        function search() {
-            const myInput = document.getElementById('searchbox');
-            const value = myInput.value;
-            window.location.href = "{% url 'gallery' %}?title=" + value;
+        function view_news(imgsrc) {
+            window.open(imgsrc, '_blank');
         }
     </script>
 </head>
 
 <body class="m-5">
     <div class="container">
-        <div class="banner">
-            <h1>Gallery Manager</h1>
+        <div class="header">
+            <div class="input-group app-search">
+                <!-- <input type="text" id="searchbox" name="searchbox" class="form-control" placeholder="search.." aria-label="Photo's title" aria-describedby="basic-addon2">
+                <div class="input-group-append">
+                  <button class="btn btn-outline-secondary" onclick="search()" type="button">Search</button>
+                </div> -->
+            </div>
         </div>
         {% block content %}{% endblock %}
     </div>
