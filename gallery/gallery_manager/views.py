@@ -85,11 +85,9 @@ def image_upload(request):
             except ValidationError as e:
                 error_message=str(e)
                 error_message=error_message[2:len(error_message)-2]
-                status=False   
-            
-            form = GalleryForm()
-            context = {'form': form, 'categories': categories,'status':status, 'message':error_message}
+                status=False
             form = GalleryForm(request.POST, request.FILES)
+            context = {'form': form, 'categories': categories,'status':status, 'message':error_message}            
             return render(request, 'gallery_manager/add_photo.html', context)        
         else:
             form = GalleryForm()
